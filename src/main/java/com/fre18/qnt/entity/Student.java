@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="student")
 public class Student {
@@ -27,6 +29,7 @@ public class Student {
 	private String studentAddress;
 	@Column(name="class")
 	private String studentClass;
+	@JsonIgnore
 	@ManyToMany(mappedBy="students")
 	private Set<Course> courses = new HashSet<>();
 	public int getStudentId() {

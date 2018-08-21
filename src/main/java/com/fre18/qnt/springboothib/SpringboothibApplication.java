@@ -20,18 +20,18 @@ import com.fre18.qnt.service.CourseService;
 import com.fre18.qnt.service.CustomerService;
 import com.fre18.qnt.service.StudentService;
 
-@SpringBootApplication
+@SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class)
 @ComponentScan({ "com.fre18.qnt.springboothib","com.fre18.qnt.service","com.fre18.qnt.serviceimpl" })
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
-public class SpringboothibApplication implements CommandLineRunner{
+public class SpringboothibApplication /*implements CommandLineRunner*/{
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringboothibApplication.class, args); 
 	}
 
 	 
-	@Autowired
+	/*@Autowired
 	private CustomerService customerService;
 	@Autowired
 	private StudentService studentService;
@@ -41,8 +41,8 @@ public class SpringboothibApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		/*Customer customer = customerService.findById(1);
-		System.out.println(customer.getName()); */
+		Customer customer = customerService.findById(1);
+		System.out.println(customer.getName()); 
 		
 		Student student1 = new Student("Quan", 20);
 		Student student2 = new Student("Binh", 20);
@@ -50,19 +50,19 @@ public class SpringboothibApplication implements CommandLineRunner{
 		Course course1 = new  Course("Java", 500);
 		Course course2 = new  Course("PHP", 500);
 		
-		/*studentService.save(student1);
+		studentService.save(student1);
 		studentService.save(student2);
-		studentService.save(student3);*/
+		studentService.save(student3);
 		List<Student> students = studentService.findAll();
 		for (Student item : students) {
 			System.out.println(item.getStudentName());
 		}
 
-		/*courseService.save(course1);
-		courseService.save(course2);*/
+		courseService.save(course1);
+		courseService.save(course2);
 		List<Course> courses = courseService.findAll();
 		for (Course item : courses) {
 			System.out.println(item.getCourseName());
 		}
-	}
+	}*/
 }
